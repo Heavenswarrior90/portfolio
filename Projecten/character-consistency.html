@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Character Consistency – Juno Nova</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="De Juno Nova methode voor altijd consistente, herkenbare AI-personages.">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    main { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 38px; padding-bottom: 38px; z-index: 1; position: relative; }
+    .project-detail-wrapper { max-width: 1100px; width: 100%; padding: 0 20px; }
+    .poster-flex { display: flex; align-items: flex-start; gap: 38px; }
+    .poster-main { flex: 2 1 0; min-width: 0; }
+    .poster-gallery {
+      flex: 1 1 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 24px;
+      margin-top: 10px;
+    }
+    .poster-gallery img {
+      width: 270px;
+      height: 405px;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px #fa113344;
+      border: 2px solid #fa1133;
+      background: #fff;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .poster-gallery img:hover {
+      transform: scale(1.045) rotate(-1deg);
+      box-shadow: 0 10px 34px #fa1133aa;
+    }
+    @media (max-width: 1000px) {
+      .poster-flex { flex-direction: column; }
+      .poster-gallery { flex-direction: row; gap: 14px; justify-content: center; align-items: center; }
+      .poster-gallery img { width: 100%; max-width: 160px; height: 240px; }
+    }
+    section { background: #23232b; border-radius: 1.3rem; box-shadow: 0 2px 14px #fa113322; margin-bottom: 2.2rem; padding: 2.2rem 2.1rem 1.7rem 2.1rem; position: relative; z-index: 1; }
+    h1, h2 { color: #fa1133; font-weight: 700; letter-spacing: 0; margin-bottom: 14px; text-shadow: 0 0 12px #fa113366; }
+    h1 { font-size: 2.2rem; margin-top: 8px; margin-bottom: 18px; }
+    h2 { font-size: 1.18rem; margin-top: 0; }
+    blockquote { border-left: 4px solid #fa1133cc; background: #19181c; color: #fa1133cc; font-style: italic; padding: 13px 18px; margin: 18px 0; border-radius: 0.7rem; font-size: 1.06rem; box-shadow: 0 2px 10px #fa113322; }
+    .cta { text-align: right; margin-top: 10px; }
+    .cta a { color: #fa1133; font-weight: 600; text-decoration: none; }
+    @media (max-width: 850px) {
+      .project-detail-wrapper { padding: 0 3vw; }
+      section { padding: 1.3rem 1vw 1.15rem 1vw; }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">AI</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../projecten.html" class="active">Projecten</a>
+      <a href="../overmij.html">Over mij</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </aside>
+  <main>
+    <div class="project-detail-wrapper poster-flex">
+      <div class="poster-main">
+        <section style="text-align:center; background:#19181c;">
+          <div class="project-icon" style="font-size:2.4rem; margin-bottom:10px;">🎭</div>
+          <h1>Character Consistency</h1>
+          <p style="font-size:1.09rem; color:#b2b2bb;">
+            Absolute visuele identiteit voor elk AI-personage.<br>
+            Voorkom drift, verlies van herkenbaarheid en subjectieve fouten – <b style="color:#fa1133;">met de Juno Nova Methode</b>.
+          </p>
+        </section>
+        <section>
+          <h2>Inleiding</h2>
+          <p>
+            Consistentie in character design is essentieel, zeker bij AI-beeldgeneratie. Met de Juno Nova Methode borg je herkenbaarheid en persoonlijkheid door slimme referenties en objectieve modeldata.
+          </p>
+        </section>
+        <section>
+          <h2>Probleemstelling</h2>
+          <ul>
+            <li>AI-characters zijn vaak inconsistent: kleine wijzigingen in prompt leiden tot grote visuele verschillen.</li>
+            <li>Subjectieve interpretatie door AI zorgt voor verlies van persoonlijkheid en herkenbaarheid.</li>
+            <li>Teamwork aan AI-personages is lastig zonder centrale, objectieve referenties.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Werkwijze & Model</h2>
+          <ul>
+            <li><b>Referentiebeeld & metadata:</b> Elke character krijgt een startbeeld + kernwoorden (age, face shape, color palette, style).</li>
+            <li><b>AI-calibratie:</b> Door prompts te herhalen met vaste metadata worden karakters robuust en schaalbaar.</li>
+            <li><b>Feedbackloop:</b> Visuele resultaten worden geverifieerd en opgeslagen, eventueel met een approval stap.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hoe werkt het?</h2>
+          <ol>
+            <li><b>Stap 1:</b> Selecteer of upload een referentiebeeld.</li>
+            <li><b>Stap 2:</b> Bepaal kern-kenmerken (face shape, leeftijd, palet).</li>
+            <li><b>Stap 3:</b> Genereer varianten en controleer op overeenkomsten.</li>
+            <li><b>Stap 4:</b> Sla goedgekeurde beelden en metadata op voor future use.</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Waarom werkt deze aanpak?</h2>
+          <ul>
+            <li><b>Robuust:</b> Consistent bij grote volumes en langere projecten.</li>
+            <li><b>Meetbaar:</b> Minder afhankelijk van subjectieve prompt tweaks.</li>
+            <li><b>Schaalbaar:</b> Perfect voor teams, agencies en lange series.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Toepassingen</h2>
+          <ul>
+            <li><b>Game design:</b> NPC’s, main characters, stijlconsistentie in assets.</li>
+            <li><b>Branding:</b> Mascottes, avatars, productvisuals.</li>
+            <li><b>AI storytelling:</b> Langlopende verhalen met visueel herkenbare karakters.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Conclusie</h2>
+          <p>
+            Door te werken met referentiebeelden én objectieve modeldata, levert deze methode altijd consistente, geloofwaardige karakters op – zelfs in grote teams of complexe pipelines.
+            <br>De Juno Nova aanpak is sneller, schaalbaarder en betrouwbaarder dan klassieke character pipelines.
+          </p>
+        </section>
+        <div class="cta">
+          <a href="../projecten.html">← Terug naar projecten</a>
+        </div>
+      </div>
+      <div class="poster-gallery">
+        <img src="../foto's/frag1.png" alt="Character Referentie 1">
+        <img src="../foto's/frag2.png" alt="Character Referentie 2">
+        <img src="../foto's/frag3.png" alt="Character Referentie 3">
+      </div>
+    </div>
+  </main>
+</body>
+</html>

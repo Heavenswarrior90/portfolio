@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    .contact-wrapper {
+        max-width: 540px;
+        margin: 0 auto;
+        padding: 70px 20px 40px 20px;
+        color: #e2e2e2;
+    }
+    .contact-title {
+        text-align: center;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: #ff1744;
+        margin-bottom: 24px;
+        text-shadow: 0 0 16px #ff174488;
+    }
+    .contact-text {
+        text-align: center;
+        color: #ccc;
+        margin-bottom: 36px;
+        font-size: 1.12rem;
+    }
+    .contact-form {
+        background: #23232b;
+        border-radius: 1.3rem;
+        padding: 32px 24px 24px 24px;
+        box-shadow: 0 4px 20px #ff174422;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    .contact-form label {
+        color: #ff1744;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        background: #19181c;
+        border: 1.5px solid #ff1744bb;
+        border-radius: 0.9rem;
+        color: #e2e2e2;
+        font-size: 1rem;
+        padding: 10px 14px;
+        margin-bottom: 10px;
+        outline: none;
+        box-shadow: 0 0 6px #ff174433;
+        resize: none;
+        transition: border 0.18s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border: 1.5px solid #ff1744;
+        background: #23232b;
+    }
+    .contact-form button {
+        margin-top: 8px;
+        background: linear-gradient(90deg,#ff1744 0%,#ff616f 100%);
+        color: #fff;
+        border-radius: 2rem;
+        font-size: 1.15rem;
+        font-weight: 700;
+        padding: 10px 0;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 2px 18px #ff174455, 0 0 8px #ff1744bb;
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+    .contact-form button:hover {
+        background: linear-gradient(90deg,#ff616f 0%,#ff1744 100%);
+        box-shadow: 0 6px 32px #ff174499;
+    }
+    .contact-socials {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .contact-socials a {
+        color: #ff1744;
+        margin: 0 9px;
+        font-weight: 600;
+        text-decoration: none;
+        background: #23232b;
+        padding: 7px 20px;
+        border-radius: 2rem;
+        box-shadow: 0 0 8px #ff174455;
+        transition: background 0.18s, color 0.18s;
+    }
+    .contact-socials a:hover {
+        background: #ff1744;
+        color: #fff;
+    }
+    @media (max-width: 700px) {
+        .contact-wrapper { padding: 40px 5px 24px 5px; }
+    }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">AI</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projecten.html">Projecten</a>
+            <a href="overmij.html">Over mij</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" title="LinkedIn"><img src="linkedin.svg" alt="LinkedIn"></a>
+            <a href="#" title="GitHub"><img src="github.svg" alt="GitHub"></a>
+        </div>
+    </aside>
+    <main>
+        <div class="contact-wrapper">
+            <h1 class="contact-title">Contact</h1>
+            <div class="contact-text">
+                Wil je samenwerken, heb je een vraag, of gewoon even sparren? <br>
+                Vul het formulier in of neem direct contact op via e-mail of socials.
+            </div>
+            <form class="contact-form" autocomplete="off">
+                <label for="naam">Naam</label>
+                <input type="text" id="naam" name="naam" placeholder="Jouw naam" required>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="jij@email.com" required>
+                <label for="bericht">Bericht</label>
+                <textarea id="bericht" name="bericht" rows="5" placeholder="Je bericht..." required></textarea>
+                <button type="submit">Verzenden</button>
+            </form>
+            <div class="contact-socials">
+                <a href="mailto:jouw@email.com">E-mail</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

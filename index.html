@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Jouw AI Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        min-height: 100vh;
+        color: #e2e2e2;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: #17181c;
+        font-feature-settings: 'liga' 1, 'calt' 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    /* Canvas fix: onder content, altijd fullscreen */
+    #background-canvas {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.28;
+    }
+    .center-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 82vh;
+        position: relative;
+        z-index: 1;
+    }
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 24px;
+        box-shadow: 0 8px 34px #fa113344, 0 0 0 4px #23232b;
+        object-fit: cover;
+        border: 4px solid #23232b;
+    }
+    .main-title {
+        font-size: 2.7rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+        text-align: center;
+        text-shadow: 0 0 10px #fa113377;
+    }
+    .main-subtitle {
+        font-size: 1.25rem;
+        color: #fa1133cc;
+        margin-bottom: 28px;
+        text-align: center;
+        font-weight: 500;
+        text-shadow: 0 0 7px #fa113355;
+    }
+    .chatgpt-input-area {
+        background: #23232b;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 32px #fa113344;
+        padding: 34px 30px 40px 30px;
+        margin-bottom: 80px;
+        min-width: 350px;
+        max-width: 500px;
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+    .gpt-answer-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+    .bot-answer {
+        width: 100%;
+        min-height: 58px;
+        background: #19181c;
+        border-radius: 1.1rem;
+        color: #fa1133;
+        font-size: 1.13rem;
+        box-shadow: 0 0 8px #fa113344;
+        display: flex;
+        align-items: center;
+        padding: 16px 18px;
+        word-break: break-word;
+        text-align: left;
+        transition: box-shadow 0.15s;
+    }
+    .gpt-form-row {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+    }
+    .gpt-form-row input[type="text"] {
+        flex: 1;
+        padding: 16px 18px;
+        border-radius: 1.1rem;
+        border: 2px solid #fa113355;
+        background: #17181c;
+        color: #e2e2e2;
+        font-size: 1.13rem;
+        outline: none;
+        transition: border 0.18s, box-shadow 0.18s;
+        box-shadow: 0 0 7px #fa113322;
+    }
+    .gpt-form-row input[type="text"]:focus {
+        border: 2px solid #fa1133;
+        background: #23232b;
+    }
+    .gpt-form-row button {
+        padding: 0 32px;
+        background: linear-gradient(90deg,#fa1133 0%,#ff2950 100%);
+        color: #fff;
+        border-radius: 2rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 2px 16px #fa113355, 0 0 7px #fa1133cc;
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+    .gpt-form-row button:hover {
+        background: linear-gradient(90deg,#ff2950 0%,#fa1133 100%);
+        box-shadow: 0 4px 22px #fa113399;
+    }
+    /* BOTTOM NAVBAR */
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 540px;
+        background: #23232b;
+        border-radius: 2rem 2rem 0 0;
+        box-shadow: 0 -2px 30px #fa113333, 0 0 0 1.5px #fa113322;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        padding: 18px 24px 12px 24px;
+        z-index: 20;
+    }
+    .nav-btn {
+        color: #fa1133cc;
+        background: none;
+        border: none;
+        font-size: 1.07rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 2rem;
+        padding: 10px 22px;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.6px;
+    }
+    .nav-btn.active, .nav-btn:hover {
+        background: #fa1133;
+        color: #fff;
+        box-shadow: 0 0 12px #fa113377;
+    }
+    @media (max-width: 700px) {
+        .chatgpt-input-area { min-width: 90vw; padding: 22px 6vw 28px 6vw;}
+        .bottom-navbar { max-width: 99vw; padding: 12px 1vw 8px 1vw; gap: 10px;}
+    }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    <div class="center-section">
+        <img src="foto's/homepage.jpg" alt="Profiel" class="profile-img">
+        <div class="main-title">Hey, ik ben Chiël</div>
+        <div class="main-subtitle">AI Engineer & Creatieve Technoloog</div>
+        <div class="chatgpt-input-area">
+            <div class="gpt-answer-row">
+                <div id="bot-answer" class="bot-answer">
+                   Wil je weten waar je wat vinden, of wil je wat weten over mij, stel het hier.
+                </div>
+            </div>
+            <form id="chat-form" class="gpt-form-row" autocomplete="off">
+                <input type="text" id="gpt-input" placeholder="Typ je vraag..." autocomplete="off">
+                <button type="submit">Verstuur</button>
+            </form>
+        </div>
+    </div>
+    <nav class="bottom-navbar">
+        <a href="index.html" class="nav-btn active">Home</a>
+        <a href="projecten.html" class="nav-btn">Projecten</a>
+        <a href="overmij.html" class="nav-btn">Over mij</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
+    <script>
+    // Generative Canvas Background
+    const canvas = document.getElementById('background-canvas');
+    const ctx = canvas.getContext('2d');
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize(); window.addEventListener('resize', resize);
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for(let i=0; i<8; i++) {
+            ctx.save();
+            ctx.translate(canvas.width/2, canvas.height/2);
+            ctx.rotate(i * Math.PI/4 + Math.sin(Date.now()/700+i)*0.7);
+            let r = 220 + Math.sin(Date.now()/1500+i*1.1)*90;
+            let g = 17 + Math.cos(Date.now()/1300+i)*70;
+            let b = 51 + Math.sin(Date.now()/1200+i*2)*100;
+            ctx.globalAlpha = 0.11 + Math.abs(Math.sin(Date.now()/1100+i))*0.16;
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            for(let a=0; a<=Math.PI*2; a+=Math.PI/24){
+                let rad = 120 + 40*Math.sin(a*6+i) + 16*Math.sin(a*5-i);
+                ctx.lineTo(Math.cos(a)*rad, Math.sin(a)*rad);
+            }
+            ctx.closePath();
+            ctx.fillStyle = `rgb(${r|0},${g|0},${b|0})`;
+            ctx.shadowBlur = 45;
+            ctx.shadowColor = "#fa1133";
+            ctx.fill();
+            ctx.restore();
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+    // Portfolio bot
+    const answerBox = document.getElementById('bot-answer');
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('gpt-input');
+    function getBotReply(input) {
+        input = input.toLowerCase();
+        if(input.includes('naam')) return "Ik ben een portfolio-bot, gemaakt door Chiël Klinkenberg.";
+        if(input.includes('curriculum vitae') || input.includes('cv')) return "Je kan meer over mijn Skills te weten komen in al mijn projecten.";
+        if(input.includes('projecten') || input.includes('project')) return "Je vindt al mijn projecten via de Projecten-tab hieronder!";
+        if(input.includes('ai')) return "AI staat voor Artificial Intelligence. Op deze site vind je mijn Portfolio over een aantal van mijn AI-projecten en tools.";
+        if(input.includes('contact')) return "Wil je contact? Gebruik de contactpagina ;)";
+        if(input.includes('juno')) return "JUNO NOVA is mijn reflectieve AI-architectuur. Lees er meer bij Projecten > JUNO NOVA.";
+        if(input.includes('n8n')) return "N8N Workflows automatiseren datastromen en AI-integraties.";
+        if(input.match(/hallo|hoi|hey|hi/)) return "Hoi! Waarmee kan ik je helpen?";
+        if(input.includes('wie ben jij')) return "Ik ben een lokale bot en help je graag met vragen over deze site.";
+        if(input.includes('body recomp')) return "Body Recomp is mijn AI-coachingsproject voor fitness & voeding. Te vinden bij Projecten.";
+        if(input.includes('supabase')) return "Supabase gebruik ik als database voor o.a. Body Recomp. Snel, schaalbaar en open source.";
+        if(input.includes('telegram')) return "Ik gebruik Telegram als trigger in meerdere projecten, zoals bij Body Recomp & Idee Verzamelaar.";
+        if(input.includes('idee')) return "Check het project 'Idee Verzamelaar' — een AI-loop om ideeën op te slaan én terug te koppelen.";
+        if(input.includes('reflectie')) return "Reflectie is een sleutelbegrip in mijn JUNO NOVA AI-architectuur. Bekijk het bij Projecten.";
+        if(input.includes('workflow')) return "Mijn workflows combineer AI, data en automatisering. N8N Workflows is daar een goed voorbeeld van.";
+        if(input.includes('chatbot')) return "Je praat er nu mee 😉 Deze mini-bot is lokaal en gericht op mijn portfolio.";
+        if(input.includes('frontend') || input.includes('voorkant')) return "Deze site is handmatig gebouwd in HTML, CSS en JavaScript. Zonder framework.";
+        if(input.includes('docker')) return "Ik gebruik Docker om lokaal AI-services te draaien zoals GPT-agents en Supabase.";
+        if(input.includes('ngrok')) return "Ngrok gebruik ik voor veilige toegang tot mijn lokale projecten, bijvoorbeeld Telegram-bots.";
+        if(input.includes('comfyui')) return "ComfyUI is een node-gebaseerde AI-omgeving. Ik gebruik het voor visuele generatieve AI.";
+        if(input.includes('poster') || input.includes('prompt')) return "De Poster Prompt Generator laat zien hoe ik AI-beeldcreatie aanpak: modulair en menselijk.";
+        if(input.includes('learn') || input.includes('leer')) return "Het Learn How project helpt gebruikers nieuwe onderwerpen te doorgronden met visuele uitleg en AI-hulp.";
+        if(input.includes('cv') || input.includes('skill')) return "Mijn skills zie je terug in mijn projecten. Scroll eens door Portfolio!";
+        if(input.includes('kleur')) return "Rood is mijn stijl! #fa1133 is mijn accentkleur doorheen de site.";
+        if(input.includes('fonts') || input.includes('lettertype')) return "JetBrains Mono en Inter zijn de fonts van deze site – helder en professioneel.";
+        if(input.includes('jij gemaakt') || input.includes('gebouwd')) return "Alles op deze site is zelfgemaakt — van design tot code tot inhoud.";
+        if(input.includes('cms')) return "Ik werk voorlopig zonder CMS. Alles handmatig, voor maximale controle.";
+        if(input.includes('markdown')) return "Veel van mijn prompts en AI-strategieën schrijf ik in markdown voor overzicht.";
+        if(input.includes('feedback')) return "Ik ben altijd benieuwd naar feedback. Gebruik gerust de contactpagina!";
+        if(input.includes('strategie')) return "Strategisch denken is een thema in JUNO NOVA en hoe ik AI-projecten opbouw.";
+        if(input.includes('openai') || input.includes('gpt')) return "OpenAI-modellen gebruik ik o.a. in Body Recomp en Idee Verzamelaar.";
+        if(input.includes('code')) return "De code op deze site is bewust licht en begrijpelijk gehouden — voor makers zonder programmeerachtergrond.";
+        if(input.includes('project toevoegen')) return "Nieuw project? Leuk! Ik werk graag modulair. Alles is uitbreidbaar.";
+        if(input.includes('dark mode') || input.includes('donker')) return "Yes! Donker thema for the win. Rustig voor de ogen en stijlvol.";
+        if(input.includes('coaching')) return "Body Recomp is mijn AI-coachingstraject. Slimme feedback, gebaseerd op voortgangsdata.";
+        if(input.includes('database')) return "Ik gebruik Supabase als backend voor projecten zoals Body Recomp en Idee Verzamelaar.";
+        if(input.includes('cron')) return "Cron-extensies helpen mij om periodieke flows te triggeren. Zie Idee Verzamelaar.";
+        if(input.includes('ai twin')) return "AI-Twin is een concept uit JUNO NOVA waarbij AI zich aanpast aan context en gebruiker.";
+        if(input.includes('rpol')) return "Reflectieve logica – RPOL – zorgt ervoor dat AI-outputs bij mij eerst worden gevalideerd.";
+        if(input.includes('modulair')) return "Mijn hele aanpak is modulair: van projecten tot prompts tot systeemlogica.";
+        if(input.includes('styling')) return "Deze site is gestyled in CSS, zonder frameworks. Gewoon clean, snel en overzichtelijk.";
+        if(input.includes('favicon')) return "Yes! Check het kleine rode icoontje bovenaan je tabblad 😉";
+        if(input.includes('svg')) return "Ik gebruik SVG’s voor lichte, scherpe iconen in de navigatie en branding.";
+        if(input.includes('over mij')) return "Op de 'Over mij' pagina lees je hoe ik werk, denk en leer.";
+        if(input.includes('projecten uitleg')) return "Klik op elk project in Portfolio voor een eigen pagina met inhoud en structuur.";
+        if(input.includes('github')) return "Binnenkort deel ik deze code ook via GitHub – hou het in de gaten!";
+        if(input.includes('linkedin')) return "LinkedIn-knopje vind je onderaan in de sidebar op desktop.";
+        if(input.includes('desktop')) return "Op desktop gebruik ik een vaste sidebar, op mobiel een slimme bottom-navbar.";
+        if(input.includes('mobile')) return "Deze site is responsive! Alles past zich aan voor mobiel gebruik.";
+        if(input.includes('aanrader')) return "Mijn aanrader? JUNO NOVA als AI-architectuur – reflectief en toekomstproof.";
+        if(input.includes('taal') || input.includes('nederlands')) return "De hele site is Nederlandstalig – AI moet ook cultureel kloppen.";
+        if(input.includes('privacy')) return "Ik host lokaal en bewaar niets extern. Alles draait op jouw interactie.";
+        if(input.includes('project structuur')) return "Elke projectpagina heeft dezelfde basisstructuur voor herkenbaarheid.";
+        if(input.includes('updates')) return "Ik werk regelmatig aan nieuwe projecten. Check 'Portfolio' voor de nieuwste.";
+        if(input.includes('gpt agent')) return "Mijn GPT-agents zijn specifiek getraind per taak – geen one-size-fits-all.";
+        if(input.includes('training')) return "Ik train mezelf door projecten te bouwen. Leren door maken is mijn stijl.";
+        if(input.includes('persona')) return "JUNO NOVA gebruikt persona’s zoals coach, strateeg, criticus en stylist.";
+        if(input.includes('feedback loop')) return "Reflectie en feedback-loops zitten in bijna al mijn AI-projecten ingebakken.";
+        if(input.includes('experiment')) return "Ik experimenteer veel. Denk aan ComfyUI, poster prompts of n8n flows.";
+        return "Sorry, daar heb ik nog geen antwoord op. Ik werk niet als een volledige LLM. Gebruik termen die over mij gaan of kijk bij Projecten!";
+
+
+
+    }
+    chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const userMsg = chatInput.value.trim();
+        if(!userMsg) return;
+        const botReply = getBotReply(userMsg);
+        answerBox.textContent = botReply;
+        chatInput.value = "";
+    });
+    </script>
+</body>
+</html>

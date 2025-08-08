@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>JUNO NOVA – Adaptief Python Leer- en Ontwikkelsysteem</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1d23;
+      color: #f6f8fa;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      font-feature-settings: 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    /* Sidebar links */
+    .sidebar {
+      background: #191b22;
+      width: 120px;
+      min-height: 100vh;
+      box-shadow: 2px 0 14px #000b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 0 16px 0;
+      z-index: 20;
+      position: fixed;
+      top: 0; left: 0;
+    }
+    .sidebar .logo {
+      font-size: 2.3rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 48px;
+      color: #fa1133;
+      text-shadow: 0 0 14px #fa113377, 0 0 30px #fa113344;
+    }
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: auto;
+    }
+    .sidebar nav a {
+      text-decoration: none;
+      color: #b2b2bb;
+      font-weight: 600;
+      font-size: 1.05rem;
+      opacity: 0.8;
+      transition: color 0.19s, text-shadow 0.15s;
+      border-left: 4px solid transparent;
+      padding-left: 18px;
+      padding-right: 10px;
+    }
+.sidebar nav a.active,
+.sidebar nav a:hover {
+    color: #fa1133;
+    text-shadow: 0 0 10px #fa113377;
+    opacity: 1;
+    }
+    /* Section navigation */
+    .section-nav {
+      min-width: 210px;
+      background: #23232b;
+      border-radius: 1rem;
+      box-shadow: 0 4px 18px #fa113333;
+      padding: 24px 18px;
+      margin-right: 36px;
+      position: sticky; top: 36px;
+      height: fit-content;
+      margin-left: 130px; /* Plaats ruimte voor de sidebar */
+    }
+    .section-nav ul { list-style:none; padding:0; margin:0; }
+    .section-nav li { margin-bottom: 14px; }
+    .section-nav a {
+      color: #fa1133cc;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.18s;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .section-nav a.active, .section-nav a:hover {
+      background: #fa1133;
+      color: #fff;
+      box-shadow: 0 0 10px #fa113355;
+    }
+    .project-main-content {
+      display: flex;
+      max-width: 1100px;
+      margin: 60px auto 32px auto;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+    .project-sections {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .project-section {
+      background: #23232b;
+      border-radius: 1.1rem;
+      box-shadow: 0 2px 14px #fa113311;
+      padding: 32px 26px 26px 32px;
+      position: relative;
+      z-index: 1;
+      scroll-margin-top: 120px;
+    }
+    .section-title {
+      color: #fa1133;
+      font-size: 1.38rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .example-badge {
+      display: inline-block;
+      background: #fa1133;
+      color: #fff;
+      border-radius: 0.6rem;
+      padding: 4px 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 12px 0 8px 0;
+    }
+    .persona-feedback {
+      margin: 18px 0 0 0;
+      background: #19181c;
+      border-left: 4px solid #fa1133;
+      border-radius: 0.7rem;
+      padding: 12px 16px;
+      color: #fa1133bb;
+      font-style: italic;
+      font-size: 1.04rem;
+      box-shadow: 0 2px 12px #fa113333;
+    }
+    @media (max-width: 900px) {
+      .project-main-content { flex-direction: column; gap: 8px; }
+      .section-nav { margin:0 0 18px 0; width: 100%; margin-left:0;}
+      .sidebar { display: none; }
+    }
+    /* Zorg dat canvas altijd op de achtergrond staat */
+    #background-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar (voor ALLE pagina's, links!) -->
+  <aside class="sidebar">
+    <div class="logo">AI</div>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../projecten.html" class="active">Projecten</a>
+      <a href="../overmij.html">Over mij</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- Achtergrond-animatie -->
+  <canvas id="background-canvas"></canvas>
+
+  <div class="project-main-content">
+    <!-- Zijbalk navigatie voor secties van dit project -->
+    <nav class="section-nav">
+      <ul>
+        <li><a href="#visie">1. Visie: leren dat blijft hangen</a></li>
+        <li><a href="#techniek">2. Technische structuur</a></li>
+        <li><a href="#flow">3. Flow per leeronderdeel</a></li>
+        <li><a href="#dashboard">4. Dashboard & voortgang</a></li>
+        <li><a href="#gamification">5. Gamification</a></li>
+        <li><a href="#usecases">6. Usecases voor bedrijven</a></li>
+        <li><a href="#voordelen">7. Voordelen voor HR & L&D</a></li>
+      </ul>
+    </nav>
+    <section class="project-sections">
+
+      <!-- Inleiding -->
+      <div class="project-section" style="background:#19181c;">
+        <div class="section-title" style="font-size:2.1rem;color:#fa1133;">JUNO NOVA: Adaptief (Python) Leer- en Ontwikkelsysteem</div>
+        <div style="font-size:1.08rem;">
+          <b>Introductie</b> – Een platform dat leren blijvend en motiverend maakt, gebouwd op leerpsychologie en moderne technologie. Gericht op duurzame kenniswinst, motivatie en persoonlijke groei. Deze case is opgebouwd op een persoonlijke leer-ontwikkeling voor Python.
+        </div>
+      </div>
+
+      <!-- Visie -->
+      <div id="visie" class="project-section">
+        <div class="section-title">1. Visie: leren dat blijft hangen</div>
+        <ul>
+          <li>Retrieval Practice – actief ophalen voor diepere verankering</li>
+          <li>Spaced Repetition – automatische herhaling van key-concepten</li>
+          <li>Interleaving – afwisseling voor beter inzicht</li>
+          <li>Elaboration – uitleggen aan anderen = beter begrijpen</li>
+          <li>Dual Coding – tekst én visuals voor sterke kennisankers</li>
+        </ul>
+        <div class="example-badge">Voorbeeld</div>
+        <div>Een gebruiker die <code>.append()</code> lastig vond, krijgt deze concepten automatisch terug in een andere usecase of quiz.</div>
+      </div>
+
+      <!-- Technische structuur -->
+      <div id="techniek" class="project-section">
+        <div class="section-title">2. Technische structuur: modulair & schaalbaar</div>
+        <ul>
+          <li>Module Loader: laadt alleen benodigde onderdelen</li>
+          <li>Light mode (snel leren) vs Full mode (met herhaling, video, gamification)</li>
+          <li>Kwaliteitscheck per module (uitleg, video, reflectie, usecase)</li>
+          <li>Automatische herhaling bij lage score of twijfel in reflectie</li>
+        </ul>
+        <div class="example-badge">Usecase</div>
+        <div>Score je laag op een quiz over functies? Die stof komt automatisch terug in een ander projectscenario.</div>
+      </div>
+
+      <!-- Flow per leeronderdeel -->
+      <div id="flow" class="project-section">
+        <div class="section-title">3. Flow per leeronderdeel</div>
+        <ul>
+          <li>Uitleg met analogie/toepassing</li>
+          <li>Usecase: "Stel je voor dat..."-scenario</li>
+          <li>Video-uitleg (YouTube, visuals)</li>
+          <li>Reflectie: "Leg het uit aan een collega"</li>
+          <li>Korte toets en herkansing bij score &lt;7</li>
+          <li>XP, badges, unlockables, persona-feedback</li>
+        </ul>
+        <div class="example-badge">Voorbeeld</div>
+        <div>Gebruik van <code>len(team)</code> om direct spelers in een FPL-team te tellen.</div>
+      </div>
+
+      <!-- Dashboard & voortgang -->
+      <div id="dashboard" class="project-section">
+        <div class="section-title">4. Dashboard en voortgang</div>
+        <ul>
+          <li>Status (bezig / afgerond)</li>
+          <li>Aantal onderdelen beheerst/herhalen</li>
+          <li>XP & levels</li>
+          <li>Reflecties en unlockables</li>
+        </ul>
+        <div class="persona-feedback">🟢 Coach: Je bent gegroeid in conditionele logica. Laten we nu doorpakken met iteratie.</div>
+      </div>
+
+      <!-- Gamification -->
+      <div id="gamification" class="project-section">
+        <div class="section-title">5. Gamification: motivatie door momentum</div>
+        <ul>
+          <li>XP, badges, unlocks en persona’s</li>
+          <li>Level-ups, nieuwe rollen (bijv. Debugger)</li>
+          <li>Mini-projects als extra beloning</li>
+          <li>Gerichte feedback door persona’s (Coach, Criticus, Planner, Strategist)</li>
+        </ul>
+        <div class="example-badge">Feedback</div>
+        <div>🔷 Strategist: Je toont groei in het herkennen van patronen.</div>
+      </div>
+
+      <!-- Usecases voor bedrijven -->
+      <div id="usecases" class="project-section">
+        <div class="section-title">6. Concrete usecases voor bedrijven</div>
+        <ul>
+          <li>Onboarding junior developers (blijvende groei & motivatie)</li>
+          <li>Upskill voor data-analisten (AI, dashboards, scraping)</li>
+          <li>AI integratie: systematisch leren werken met prompts & Python</li>
+        </ul>
+      </div>
+
+      <!-- Voordelen voor HR en L&D -->
+      <div id="voordelen" class="project-section">
+        <div class="section-title">7. Voordelen voor HR en L&D</div>
+        <ul>
+          <li>Heldere rapportages per medewerker</li>
+          <li>Inzicht in twijfelpunten/kennisgaten</li>
+          <li>Flexibel inzetbaar per thema</li>
+          <li>Combineerbaar met andere platforms via JSON-backup</li>
+          <li>Adaptief & gepersonaliseerd</li>
+        </ul>
+      </div>
+      <!-- Samenvatting -->
+      <div class="project-section" style="background:#19181c;">
+        <div style="font-size:1.13rem;color:#fa1133;font-weight:600;margin-bottom:7px;">Samenvatting in één zin</div>
+        <div style="font-size:1.06rem;">
+          "Dit systeem combineert leerpsychologie, adaptieve technologie en gamification tot een krachtige motor voor duurzame, motiverende groei in Python en daarbuiten."
+        </div>
+      </div>
+
+      <a href="../projecten.html" style="color:#fa1133; margin-top:30px; display:inline-block;">← Terug naar projecten</a>
+    </section>
+  </div>
+
+  <!-- Canvas Animatie Script -->
+  <script>
+    const canvas = document.getElementById('background-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize(); window.addEventListener('resize', resize);
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for(let i=0; i<8; i++) {
+          ctx.save();
+          ctx.translate(canvas.width/2, canvas.height/2);
+          ctx.rotate(i * Math.PI/4 + Math.sin(Date.now()/700+i)*0.7);
+          let r = 220 + Math.sin(Date.now()/1500+i*1.1)*90;
+          let g = 17 + Math.cos(Date.now()/1300+i)*70;
+          let b = 51 + Math.sin(Date.now()/1200+i*2)*100;
+          ctx.globalAlpha = 0.11 + Math.abs(Math.sin(Date.now()/1100+i))*0.16;
+          ctx.beginPath();
+          ctx.moveTo(0,0);
+          for(let a=0; a<=Math.PI*2; a+=Math.PI/24){
+            let rad = 120 + 40*Math.sin(a*6+i) + 16*Math.sin(a*5-i);
+            ctx.lineTo(Math.cos(a)*rad, Math.sin(a)*rad);
+          }
+          ctx.closePath();
+          ctx.fillStyle = `rgb(${r|0},${g|0},${b|0})`;
+          ctx.shadowBlur = 45;
+          ctx.shadowColor = "#fa1133";
+          ctx.fill();
+          ctx.restore();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    }
+  </script>
+  <script>
+    // Highlight active section in nav
+    document.querySelectorAll('.section-nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        setTimeout(() => {
+          document.querySelectorAll('.section-nav a').forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }, 20);
+      });
+    });
+  </script>
+</body>
+</html>
