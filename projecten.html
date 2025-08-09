@@ -1,67 +1,109 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Projecten – Jouw Naam</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projecten – Juno Nova</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Page-specific styles: vertical list + glass morph cards -->
+  <style>
+    .projects-wrap { width: min(900px, 92vw); margin: 0 auto; }
+    .projects-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 16px; }
+
+    /* Glass card variant */
+    .glass-card {
+      position: relative;
+      display: block;
+      padding: 18px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%);
+      -webkit-backdrop-filter: blur(30px) saturate(1.1);
+      backdrop-filter: blur(10px) saturate(1.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,.28);
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .glass-card:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,.34); background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.05) 100%); }
+
+    .glass-card h3 { margin: 0 0 6px; color: var(--text); font-weight: 800; }
+    .glass-card p { margin: 0; color: var(--muted); }
+
+    /* Small accent pill on the right */
+    .glass-card::after {
+      content: "";
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      width: 8px; height: 8px; border-radius: 999px; background: var(--primary);
+      box-shadow: 0 0 14px rgba(255, 23, 68, .55);
+    }
+  </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">AI</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projecten.html" class="active">Projecten</a>
-            <a href="overmij.html">Over mij</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </aside>
-    <div class="projects-main">
-      <div class="projects-title">Projecten</div>
-      <div class="project-gallery">
-        <a class="project-card" href="Projecten/juno-nova.html">
-          <div class="project-icon">🌸</div>
-          <div>
-            <div class="project-title">JUNO NOVA</div>
-            <div class="project-desc">Reflectieve, modulaire AI-architectuur...</div>
-          </div>
-        </a>
-        <a class="project-card" href="Projecten/learn-how.html">
-          <div class="project-icon">📚</div>
-          <div>
-            <div class="project-title">Learn how</div>
-            <div class="project-desc">Micro-learnings en AI-kennisklips...</div>
-          </div>
-        </a>
-        <a class="project-card" href="Projecten/body-recomp.html">
-          <div class="project-icon">🏅</div>
-          <div>
-            <div class="project-title">Body Recomp</div>
-            <div class="project-desc">AI-coaching voor spieropbouw & vetverlies...</div>
-          </div>
-        </a>
-        <a class="project-card" href="Projecten/character-consistency.html">
-          <div class="project-icon">🎭</div>
-          <div>
-            <div class="project-title">Character consistency</div>
-            <div class="project-desc">Consistente character-styling in AI...</div>
-          </div>
-        </a>
-        <a class="project-card" href="Projecten/poster-prompt-generator.html">
-          <div class="project-icon">🖼️</div>
-          <div>
-            <div class="project-title">Poster prompt generator</div>
-            <div class="project-desc">Tool voor unieke, printklare poster prompts...</div>
-          </div>
-        </a>
-        <a class="project-card" href="Projecten/n8n-workflows.html">
-          <div class="project-icon">🔗</div>
-          <div>
-            <div class="project-title">N8N Workflows</div>
-            <div class="project-desc">Automatisering van taken en datastromen...</div>
-          </div>
-        </a>
-      </div>
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="index.html">Home</a>
+        <a href="projecten.html" class="active">Projecten</a>
+        <a href="overmij.html">Over mij</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('mobile-nav').classList.contains('open'));"><span></span><span></span><span></span></button>
     </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
+      <a href="index.html">Home</a>
+      <a href="projecten.html" class="active">Projecten</a>
+      <a href="overmij.html">Over mij</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="projects-wrap">
+      <h1 class="center" style="text-align:center">Projecten</h1>
+
+      <!-- Verticale lijst met glass morph effect -->
+      <ul class="projects-list">
+        <li>
+          <a class="glass-card" href="Projecten/juno-nova.html">
+            <h3>JUNO NOVA</h3>
+            <p>Reflectieve, modulaire AI‑architectuur.</p>
+          </a>
+        </li>
+        <li>
+          <a class="glass-card" href="Projecten/learn-how.html">
+            <h3>Learn how</h3>
+            <p>Micro‑learnings en AI‑kennisklips.</p>
+          </a>
+        </li>
+        <li>
+          <a class="glass-card" href="Projecten/body-recomp.html">
+            <h3>Body Recomp</h3>
+            <p>AI‑coaching voor spieropbouw & vetverlies.</p>
+          </a>
+        </li>
+        <li>
+          <a class="glass-card" href="Projecten/character-consistency.html">
+            <h3>Character consistency</h3>
+            <p>Consistente character‑styling in AI.</p>
+          </a>
+        </li>
+        <li>
+          <a class="glass-card" href="Projecten/poster-prompt-generator.html">
+            <h3>Poster prompt generator</h3>
+            <p>Tool voor unieke, printklare poster prompts.</p>
+          </a>
+        </li>
+        <li>
+          <a class="glass-card" href="Projecten/n8n-workflows.html">
+            <h3>N8N Workflows</h3>
+            <p>Automatisering van taken en datastromen.</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
 </body>
 </html>

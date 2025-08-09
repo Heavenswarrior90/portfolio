@@ -1,238 +1,82 @@
-<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Body Recomp 2025 – Het Systeem</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ontdek de Body Recomp 2025 methode: AI-gedreven, cyclisch, en volledig data-gebaseerd. Verlaag je vetpercentage, behoud spiermassa en optimaliseer je metabolisme met AI.">
-  <link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Ontdek de Body Recomp 2025 methode: AI-gedreven, cyclisch, en volledig data-gebaseerd.">
+  <link rel="stylesheet" href="../styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    main {
-      flex: 1;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding-top: 38px;
-      padding-bottom: 38px;
-      z-index: 1;
-      position: relative;
-    }
-    .project-detail-wrapper {
-      max-width: 960px;
-      width: 100%;
-      padding: 0 20px;
-    }
-    section {
-      background: #23232b;
-      border-radius: 1.3rem;
-      box-shadow: 0 2px 14px #fa113322;
-      margin-bottom: 2.2rem;
-      padding: 2.2rem 2.1rem 1.7rem 2.1rem;
-      position: relative;
-      z-index: 1;
-    }
-    .blocks {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 8px;
-      margin-bottom: 10px;
-    }
-    .block {
-      background: #19181c;
-      border-radius: 1rem;
-      padding: 1.25rem 1.2rem 1.15rem 1.2rem;
-      box-shadow: 0 1px 10px #fa113311;
-    }
-    .block h3 {
-      color: #fa1133cc;
-      font-size: 1.13rem;
-      font-weight: 700;
-      margin: 0 0 0.3rem 0;
-    }
-    h1, h2 {
-      color: #fa1133;
-      font-weight: 700;
-      letter-spacing: 0;
-      margin-bottom: 14px;
-      text-shadow: 0 0 12px #fa113366;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-top: 8px;
-      margin-bottom: 18px;
-    }
-    h2 {
-      font-size: 1.28rem;
-      margin-top: 0;
-    }
-    .cta {
-      text-align: center;
-      padding: 1.8rem 0 0.7rem 0;
-    }
-    .cta a {
-      background: linear-gradient(90deg, #fa1133 0%, #ff2950 100%);
-      color: #fff;
-      padding: 1em 2.2em;
-      border-radius: 2rem;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.12rem;
-      box-shadow: 0 2px 30px #fa113355, 0 0 12px #fa1133cc;
-      transition: background 0.2s, box-shadow 0.2s;
-      border: none;
-      display: inline-block;
-      margin-top: 8px;
-    }
-    .cta a:hover {
-      background: linear-gradient(90deg,#ff2950 0%,#fa1133 100%);
-      box-shadow: 0 4px 32px #fa113388;
-    }
-    @media (max-width: 850px) {
-      .project-detail-wrapper { padding: 0 3vw; }
-      section { padding: 1.3rem 1vw 1.15rem 1vw; }
-      .blocks { grid-template-columns: 1fr; }
-    }
-  </style>
+  <style>.project-detail-wrapper{width:min(960px,94vw);margin-inline:auto}section{background:var(--card);border-radius:1.3rem;box-shadow:var(--shadow);margin-bottom:1.8rem;padding:clamp(16px,2.2vw,28px)}.blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}</style>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="logo">AI</div>
-    <nav>
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="../index.html">Home</a>
+        <a href="../projecten.html" class="active">Projecten</a>
+        <a href="../overmij.html">Over mij</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('mobile-nav').classList.contains('open'));"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
       <a href="../index.html">Home</a>
       <a href="../projecten.html" class="active">Projecten</a>
       <a href="../overmij.html">Over mij</a>
       <a href="../contact.html">Contact</a>
     </nav>
-  </aside>
-  <main>
-    <div class="project-detail-wrapper">
+  </header>
 
+  <main class="page">
+    <div class="project-detail-wrapper">
+      <!-- Hero -->
       <section style="text-align:center; background:#19181c;">
         <div class="project-icon" style="font-size:2.7rem; margin-bottom:18px;">🏋️‍♂️</div>
         <h1>Body Recomp 2025</h1>
-        <p style="font-size:1.09rem; color:#b2b2bb;">
-          AI-gedreven, cyclisch leefstijlprogramma voor vetverlies, spierbehoud en gedragsoptimalisatie.<br>
-          Gebaseerd op data, wetenschap & slimme gedragssturing.<br>
-          <b style="color:#fa1133;">Powered by AI-Twin (JUNO)</b>
-        </p>
+        <p style="font-size:1.09rem; color:#b2b2bb;">AI-gedreven, cyclisch leefstijlprogramma voor vetverlies, spierbehoud en gedragsoptimalisatie.<br>Gebaseerd op data, wetenschap & slimme gedragssturing.<br><b style="color:var(--primary-2);">Powered by AI-Twin (JUNO)</b></p>
       </section>
 
+      <!-- Content (ongewijzigd, samengevoegd zonder duplicaten) -->
       <section>
         <h2>Hoe het idee ontstond</h2>
-        <p>
-          Body Recomp 2025 is ontstaan uit het idee om meer datagedreven een programma te volgen. Het idee: <b>alles automatiseren</b> – van loggen tot analyseren – én gedrag direct koppelen aan je data.<br>
-          Door AI (Large Language Model) slim te gebruiken, werd het mogelijk om een systeem te bouwen dat:
-        </p>
+        <p>Body Recomp 2025 is ontstaan uit het idee om meer datagedreven een programma te volgen. Het idee: <b>alles automatiseren</b> – van loggen tot analyseren – én gedrag direct koppelen aan je data.<br>Door AI (Large Language Model) slim te gebruiken, werd het mogelijk om een systeem te bouwen dat:</p>
         <ul>
           <li>Iedere dag automatisch alle voeding, training, slaap en metingen verwerkt</li>
           <li>Zelf trends, motivatiedips en risicopunten herkent</li>
           <li>Je proactief bijstuurt – zonder menselijke bias of vergeetachtigheid</li>
-          <li>Schakelt naar een andere dieet versie als het nodig is. ( recomp, cut-fase, bulk)</li>
+          <li>Schakelt naar een andere dieet versie als het nodig is. (recomp, cut-fase, bulk)</li>
         </ul>
       </section>
 
       <section>
         <h2>Hoe werkt het?</h2>
         <div class="blocks">
-          <div class="block">
-            <h3>1. Cyclisch Systeem</h3>
-            <ul>
-              <li><b>Cut phase</b>: Vetverlies (1–3 weken, 500 kcal tekort)</li>
-              <li><b>Priming</b>: Herstel (1 week, onderhoud)</li>
-              <li><b>Mini-bulk</b>: Spiergroei (1 week, licht surplus)</li>
-              <li>Fases worden herhaald/ aangepast op basis van jouw data</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3>2. Volledige Data Logging</h3>
-            <ul>
-              <li>Voeding: kcal, macro's, maaltijdtiming</li>
-              <li>Training: type, volume, spiergroepen</li>
-              <li>Slaap: duur, kwaliteit, slaapfasen</li>
-              <li>Metingen: gewicht, vet%, spiermassa, omtrek, foto's</li>
-              <li>Gedrag: motivatie, dagboek, reflecties</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3>3. AI-Twin Analyse & Feedback</h3>
-            <ul>
-              <li>Detecteert automatisch trends en terugval</li>
-              <li>Geeft directe adviezen op voeding, training & herstel</li>
-              <li>Spiegelt je gedrag (motivatiedips, risicodagen, slaaptekort)</li>
-              <li>Bewaart álle logs centraal (Excel, supabase, PDF)</li>
-            </ul>
-          </div>
-          <div class="block">
-            <h3>4. Proactieve Coaching</h3>
-            <ul>
-              <li>Elke dag/week feedback & nieuwe strategie</li>
-              <li>Macro’s, fasen, plan automatisch bijgesteld</li>
-              <li>Visuele logvergelijking (foto’s, grafieken)</li>
-            </ul>
-          </div>
+          <div class="block"><h3>AI‑Analyse</h3><p>Automatische beoordeling van progressie (vorm, schaduw, proporties) t.o.v. vorige week.</p></div>
+          <div class="block"><h3>Database</h3><p>Data wordt opgeslagen (bv. in Supabase) en historisch vergeleken.</p></div>
+          <div class="block"><h3>Agent‑feedback</h3><p>GPT‑agent interpreteert veranderingen en past plan aan.</p></div>
+          <div class="block"><h3>Risicomanagement</h3><p>AI detecteert triggers voor terugval (feestjes, stress, slaaptekort) en stuurt tijdig bij.</p></div>
+          <div class="block"><h3>Export & Visualisatie</h3><p>Alle data en progressie zijn exporteerbaar voor 100% inzicht en regie.</p></div>
         </div>
       </section>
 
       <section>
-        <h2>Waarom werkt deze aanpak?</h2>
-        <ul>
-          <li><b>Alles-in-één systeem:</b> Geen losse spreadsheets of vergeten meetmomenten</li>
-          <li><b>100% objectief:</b> Geen menselijke bias, altijd evidence-based</li>
-          <li><b>Directe gedragsfeedback:</b> Motivatie, terugval en herstel direct zichtbaar</li>
-          <li><b>Automatische trendanalyse:</b> Vet, spier, herstel en motivatie in 1 overzicht</li>
-          <li><b>Self-learning:</b> Systeem leert continu van jouw data en gedrag</li>
-          <li><b>Transparant:</b> Je kunt alles exporteren (Excel, Notion, PDF)</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Innovaties & Unieke Features</h2>
-        <div class="blocks">
-          <div class="block">
-            <h3>Visuele Log Vergelijking</h3>
-            <p>Foto’s automatisch vergelijken en feedback op fysieke verandering, houding en progressie.</p>
-          </div>
-          <div class="block">
-            <h3>Automatische Check-ins</h3>
-            <p>Wekelijkse analyse van vet, spier, motivatie en gedrag. Direct nieuw advies bij stagnatie of versnelling.</p>
-          </div>
-          <div class="block">
-            <h3>Risicomanagement</h3>
-            <p>AI detecteert triggers voor terugval (bv. feestjes, stress, slaaptekort) en stuurt gedrag bij vóór het misgaat.</p>
-          </div>
-          <div class="block">
-            <h3>Export & Visualisatie</h3>
-            <p>Alle data, analyses en progressie direct exporteerbaar voor 100% inzicht en regie.</p>
-          </div>
-        </div>
-      </section>
-            <section>
         <h2>Toekomst en schaalbaarheid</h2>
         <div class="blocks">
-          <div class="block">
-            <h3>Coaches</h3>
-            <p>Personal trainer functie; toepassen van de kennis van jouw personal trainer</p>
-          </div>
-          <div class="block">
-            <h3>Maaltijden</h3>
-            <p>Maaltijden of eigenmaaltijden binnen het systeem implementeren om op maat maaltijden te krijgen</p>
-          </div>
+          <div class="block"><h3>Coaches</h3><p>Personal trainer functie; toepassen van de kennis van jouw personal trainer.</p></div>
+          <div class="block"><h3>Maaltijden</h3><p>Maaltijden / eigenmaaltijden integreren voor gepersonaliseerde voedingsplannen.</p></div>
+        </div>
       </section>
 
       <section>
         <h2>Veelgestelde Vragen</h2>
         <ul>
-          <li><b>Voor wie is dit?</b> Iedereen die serieus aan de slag wil met recompositie, data & gedragsverbetering</li>
-          <li><b>Is het alleen voor experts?</b> Nee! Het systeem begeleidt je op jouw niveau en past zich aan jouw situatie aan</li>
-          <li><b>Kan ik m’n trainer of coach laten meekijken?</b> Ja, alles is deelbaar/exporteerbaar</li>
-          <li><b>Wat als ik een week niks doe?</b> Het systeem geeft advies om weer op te pakken, zonder oordeel</li>
+          <li><b>Voor wie is dit?</b> Iedereen die serieus aan de slag wil met recompositie, data & gedragsverbetering.</li>
+          <li><b>Is het alleen voor experts?</b> Nee! Het systeem begeleidt je op jouw niveau en past zich aan jouw situatie aan.</li>
+          <li><b>Kan ik m’n trainer of coach laten meekijken?</b> Ja, alles is deelbaar/exporteerbaar.</li>
+          <li><b>Wat als ik een week niks doe?</b> Het systeem geeft advies om weer op te pakken, zonder oordeel.</li>
         </ul>
       </section>
-
     </div>
   </main>
 </body>

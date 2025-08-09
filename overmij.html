@@ -1,271 +1,155 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Over mij</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-    .about-wrapper {
-        max-width: 850px;
-        margin: 0 auto;
-        padding: 64px 20px 32px 20px;
-        color: #e2e2e2;
-    }
-    .about-title {
-        text-align: center;
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: #ff1744;
-        margin-bottom: 18px;
-        text-shadow: 0 0 16px #ff174488;
-    }
-    .about-avatar {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 26px;
-    }
-    .about-avatar img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        box-shadow: 0 0 32px #ff174455, 0 0 0 6px #23232b;
-        border: 3px solid #23232b;
-        object-fit: cover;
-    }
-    .about-bio {
-        font-size: 1.17rem;
-        line-height: 1.7;
-        text-align: center;
-        margin-bottom: 40px;
-        color: #ccc;
-    }
-    .about-columns {
-        display: flex;
-        gap: 36px;
-        justify-content: center;
-        align-items: flex-start;
-        margin-bottom: 36px;
-        flex-wrap: wrap;
-    }
-    .about-column {
-        flex: 1;
-        background: #23232b;
-        border-radius: 1.4rem;
-        padding: 28px 24px;
-        min-width: 230px;
-        max-width: 350px;
-        box-shadow: 0 4px 22px #ff174422;
-    }
-    .about-column h3 {
-        color: #ff1744;
-        margin-top: 0;
-        margin-bottom: 15px;
-        font-size: 1.23rem;
-        font-weight: 600;
-        text-shadow: 0 0 8px #ff174455;
-    }
-    .about-list {
-        padding-left: 16px;
-        margin-bottom: 0;
-    }
-    .about-contact {
-        text-align: center;
-        margin-top: 24px;
-    }
-    .about-contact a {
-        color: #ff1744;
-        font-weight: 600;
-        text-decoration: none;
-        background: #23232b;
-        padding: 9px 22px;
-        border-radius: 2rem;
-        margin: 0 8px;
-        box-shadow: 0 0 8px #ff174455;
-        transition: background 0.2s, color 0.2s;
-    }
-    .about-contact a:hover {
-        background: #ff1744;
-        color: #fff;
-    }
-    .cv-section {
-        max-width: 700px;
-        margin: 60px auto 40px auto;
-        background: #23232b;
-        border-radius: 1.3rem;
-        box-shadow: 0 4px 28px #ff174411;
-        padding: 40px 32px;
-    }
-    .cv-title {
-        color: #ff1744;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 14px;
-    }
-    .cv-subtitle {
-        color: #fa1133;
-        font-size: 1.2rem;
-        margin: 26px 0 8px;
-    }
-    .cv-contact-info {
-        margin-bottom: 20px;
-    }
-    .cv-contact-info a {
-        color: #fa1133;
-        text-decoration: none;
-    }
-    .cv-contact-info a:hover {
-        text-decoration: underline;
-    }
-    .cv-list {
-        padding-left: 20px;
-        margin-bottom: 16px;
-    }
-    .cv-list li {
-        margin-bottom: 8px;
-    }
-    .cv-work-item {
-        margin-bottom: 16px;
-    }
-    .cv-work-item i {
-        color: #ccc;
-        font-style: italic;
-    }
-    @media (max-width: 900px) {
-        .about-columns { flex-direction: column; gap: 16px; }
-    }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Over mij</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Page‑specific: nette sectie‑indeling + glass cards */
+    .about-wrapper { width: min(900px, 92vw); margin: 0 auto; }
+    .about-title { text-align: center; font-size: clamp(2rem, 2.2vw + 1rem, 2.6rem); font-weight: 800; color: #ff1744; margin: 0 0 18px; text-shadow: 0 0 16px #ff174488; }
+    .about-avatar { display: grid; place-items: center; margin-bottom: 22px; }
+    .about-avatar img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 4px solid #23232b; box-shadow: 0 0 32px #ff174455, 0 0 0 6px #23232b; }
+    .about-bio { font-size: 1.08rem; line-height: 1.7; text-align: center; margin: 0 0 28px; color: #ccc; }
+
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.03) 100%);
+      border: 1px solid rgba(255,255,255,.18); border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,.24);
+      -webkit-backdrop-filter: blur(10px) saturate(1.05); backdrop-filter: blur(10px) saturate(1.05);
+      padding: clamp(18px, 2vw, 26px); }
+
+    .about-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 22px; }
+    .about-column h3 { color: #ff1744; margin: 0 0 10px; font-size: 1.15rem; font-weight: 700; text-shadow: 0 0 8px #ff174455; }
+    .about-list { padding-left: 16px; margin: 0; }
+
+    .about-contact { text-align: center; margin: 10px 0 0; }
+    .about-contact a { color: #ff1744; font-weight: 700; text-decoration: none; background: #23232b; padding: 10px 18px; border-radius: 999px; margin: 0 6px; box-shadow: 0 0 8px #ff174455; }
+    .about-contact a:hover { background: #ff1744; color: #fff; }
+
+    .cv-section { width: min(900px, 92vw); margin: 28px auto 40px; }
+    .cv-title { color: #ff1744; font-size: clamp(1.6rem, 1.3vw + 1rem, 2.2rem); font-weight: 800; margin: 0 0 10px; }
+    .cv-subtitle { color: #fa1133; font-size: 1.15rem; margin: 20px 0 8px; font-weight: 700; }
+    .cv-contact-info a { color: #fa1133; text-decoration: none; }
+    .cv-contact-info a:hover { text-decoration: underline; }
+    .cv-list { padding-left: 20px; margin: 0 0 12px; }
+    .cv-work-item { margin-bottom: 12px; }
+    .cv-work-item i { color: #ccc; font-style: italic; }
+  </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">AI</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projecten.html">Projecten</a>
-            <a href="overmij.html" class="active">Over mij</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </aside>
-    <main>
-        <div class="about-wrapper">
-            <h1 class="about-title">Over mij</h1>
-            <div class="about-avatar">
-                <img src="foto's/overmij.jpg" alt="Chiël Klinkenberg - AI Engineer en creatieve maker">
-            </div>
-            <div class="about-bio">
-                Hoi! Ik ben <b>Chiël Klinkenberg</b>, een context Engineer en creatieve maker met passie voor technologie en design.<br>
-                Mijn kracht zit in het combineren van strategisch denken, experimenteren en het vertalen van AI naar praktische oplossingen.<br>
-                Ik geloof dat AI niet alleen slim, maar ook mensgericht en inspirerend moet zijn. <br>Altijd nieuwsgierig, altijd in ontwikkeling.
-            </div>
-            <div class="about-columns">
-                <div class="about-column">
-                    <h3>Skills</h3>
-                    <ul class="about-list">
-                        <li>AI & Prompt/context Engineering</li>
-                        <li>LLMs, RAG,</li>
-                        <li>ComfyUI, N8N, API's</li>
-                        <li>Photoshop, Illustrator</li>
-                    </ul>
-                </div>
-                <div class="about-column">
-                    <h3>Soft Skills</h3>
-                    <ul class="about-list">
-                        <li>Communicatie & teamwork</li>
-                        <li>Probleemoplossend denken</li>
-                        <li>Creativiteit & focus</li>
-                        <li>Leren & begeleiden</li>
-                        <li>Empathie & adaptiviteit</li>
-                    </ul>
-                </div>
-                <div class="about-column">
-                    <h3>Favoriete AI Projecten</h3>
-                    <ul class="about-list">
-                        <li>JUNO NOVA</li>
-                        <li>N8N Workflows</li>
-                        <li>Poster prompt generator</li>
-                        <li>Character consistency</li>
-                        <li>Body Recomp</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="about-contact">
-                <span>Contact:</span>
-                <a href="mailto:c.klinkenberg90@gmail.com">E-mail</a>
-                <a href="https://www.linkedin.com/in/chiëlklinkenberg/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/chiellinkenberg" target="_blank">GitHub</a>
-            </div>
+  <!-- Top header (fixed) -->
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="index.html">Home</a>
+        <a href="projecten.html">Projecten</a>
+        <a href="overmij.html" class="active">Over mij</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="const m=document.getElementById('mobile-nav');m.classList.toggle('open');this.setAttribute('aria-expanded',m.classList.contains('open'));"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
+      <a href="index.html">Home</a>
+      <a href="projecten.html">Projecten</a>
+      <a href="overmij.html" class="active">Over mij</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="about-wrapper">
+      <h1 class="about-title">Over mij</h1>
+      <div class="about-avatar"><img src="foto's/overmij.jpg" alt="Chiël Klinkenberg - AI Engineer en creatieve maker" /></div>
+      <p class="about-bio">Hoi! Ik ben <b>Chiël Klinkenberg</b>, een context Engineer en creatieve maker met passie voor technologie en design.<br>Mijn kracht zit in het combineren van strategisch denken, experimenteren en het vertalen van AI naar praktische oplossingen.<br>Ik geloof dat AI niet alleen slim, maar ook mensgericht en inspirerend moet zijn. <br>Altijd nieuwsgierig, altijd in ontwikkeling.</p>
+
+      <section class="about-columns">
+        <div class="about-column glass">
+          <h3>Skills</h3>
+          <ul class="about-list">
+            <li>AI & Prompt/context Engineering</li>
+            <li>LLMs, RAG</li>
+            <li>ComfyUI, N8N, API's</li>
+            <li>Photoshop, Illustrator</li>
+          </ul>
         </div>
+        <div class="about-column glass">
+          <h3>Soft Skills</h3>
+          <ul class="about-list">
+            <li>Communicatie & teamwork</li>
+            <li>Probleemoplossend denken</li>
+            <li>Creativiteit & focus</li>
+            <li>Leren & begeleiden</li>
+            <li>Empathie & adaptiviteit</li>
+          </ul>
+        </div>
+        <div class="about-column glass">
+          <h3>Favoriete AI Projecten</h3>
+          <ul class="about-list">
+            <li>JUNO NOVA</li>
+            <li>N8N Workflows</li>
+            <li>Poster prompt generator</li>
+            <li>Character consistency</li>
+            <li>Body Recomp</li>
+          </ul>
+        </div>
+      </section>
 
-        <section class="cv-section">
-            <h1 class="cv-title">CV</h1>
-            <div class="cv-contact-info">
-                <p><b>Chiël Klinkenberg</b><br>
-                Huizen · <a href="mailto:c.klinkenberg90@gmail.com">c.klinkenberg90@gmail.com</a></p>
-            </div>
+      <div class="about-contact">
+        <span>Contact:</span>
+        <a href="mailto:c.klinkenberg90@gmail.com">E‑mail</a>
+        <a href="https://www.linkedin.com/in/chiëlklinkenberg/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/chiellinkenberg" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
 
-            <h2 class="cv-subtitle">Persoonlijk profiel</h2>
-            <p>
-                Digitale strateeg met een achtergrond in marketing, sales en visuele communicatie.<br>
-                Sterk in storytelling, leren en het vertalen van technologie naar mensgerichte content. Ambitie om te groeien in het AI-domein door kennis, creativiteit en communicatie te combineren.<br>
-                Ik bouw complete workflows en systemen met behulp van geavanceerde prompttechnieken.
-            </p>
+    <section class="cv-section glass">
+      <h1 class="cv-title">CV</h1>
+      <div class="cv-contact-info">
+        <p><b>Chiël Klinkenberg</b><br />Huizen · <a href="mailto:c.klinkenberg90@gmail.com">c.klinkenberg90@gmail.com</a></p>
+      </div>
 
-            <h2 class="cv-subtitle">AI & Technische Skills</h2>
-            <ul class="cv-list">
-                <li>Prompt Engineering</li>
-                <li>Context Engineering</li>
-                <li>AI-tools: ChatGPT, Gemini, Veo3, Sora</li>
-                <li>Automatisering (No-code tool N8N) – beginner</li>
-                <li>Autodidactisch leerpad richting AI Engineering</li>
-                <li>Effectieve prompts & outputvalidatie, flow modules, rol-switching logic</li>
-            </ul>
-            <p style="font-size:1.05rem;">
-                AI ontwikkelt zich razendsnel. Ik zie het als een reis waarin ik elke dag leer, test en bouw.
-            </p>
+      <h2 class="cv-subtitle">Persoonlijk profiel</h2>
+      <p>Digitale strateeg met een achtergrond in marketing, sales en visuele communicatie.<br />Sterk in storytelling, leren en het vertalen van technologie naar mensgerichte content. Ambitie om te groeien in het AI‑domein door kennis, creativiteit en communicatie te combineren.<br />Ik bouw complete workflows en systemen met behulp van geavanceerde prompttechnieken.</p>
 
-            <h2 class="cv-subtitle">Creatieve & Communicatieve Skills</h2>
-            <ul class="cv-list">
-                <li>Adobe Suite (Photoshop, Premiere, etc.)</li>
-                <li>Fotografie & Videografie</li>
-                <li>Copywriting, storytelling & visuele strategie</li>
-                <li>Empathisch advies & coaching</li>
-                <li>Onderwijzende content formats</li>
-                <li>Analytisch & probleemoplossend</li>
-            </ul>
-            <p>
-                Creatief zijn is onderdeel van wie ik ben. Of ik nu met mijn camera werk of digitale content bouw: creativiteit neem ik altijd mee.
-            </p>
+      <h2 class="cv-subtitle">AI & Technische Skills</h2>
+      <ul class="cv-list">
+        <li>Prompt Engineering</li>
+        <li>Context Engineering</li>
+        <li>AI‑tools: ChatGPT, Gemini, Veo3, Sora</li>
+        <li>Automatisering (No‑code tool N8N) – beginner</li>
+        <li>Autodidactisch leerpad richting AI Engineering</li>
+        <li>Effectieve prompts & outputvalidatie, flow modules, rol‑switching logic</li>
+      </ul>
+      <p style="font-size:1.05rem;">AI ontwikkelt zich razendsnel. Ik zie het als een reis waarin ik elke dag leer, test en bouw.</p>
 
-            <h2 class="cv-subtitle">Werkervaring</h2>
-            <ul class="cv-list">
-                <li class="cv-work-item">
-                    <b>Hof Promotion</b> — Marketing Coördinator, Utrecht/Amsterdam (2022 – 2025)<br>
-                    <i>Marketing, visuele output, ontwerp van posters/flyers/video's, incentive communicatie, website & social media beheer, visuele identiteit.</i>
-                </li>
-                <li class="cv-work-item">
-                    <b>CK Creations</b> — Eigenaar (2022 – heden)<br>
-                    <i>Fotografie, videografie, social content, logo's, visuele huisstijlen, websites.</i>
-                </li>
-                <li class="cv-work-item">
-                    <b>NCOI Groep</b> – Opleidingsadviseur / Marketing Coördinator, Hilversum (2020 – 2021)<br>
-                    <i>Adviesgesprekken, campagnes, rapportages, website optimalisatie.</i>
-                </li>
-                <li class="cv-work-item">
-                    <b>SQRIBA / Jemax Robotics</b> – Commercieel Medewerker, Ermelo (2018 – 2019)<br>
-                    <i>Salesdemonstraties, marketingcampagnes, CRM, offertebeheer.</i>
-                </li>
-                <li class="cv-work-item">
-                    <b>VodafoneZiggo</b> – Adviseur Retail, Hilversum/Utrecht (2014 – 2018)<br>
-                    <i>Verkoop, advies, management support, data-analyse, klanttevredenheid.</i>
-                </li>
-            </ul>
+      <h2 class="cv-subtitle">Creatieve & Communicatieve Skills</h2>
+      <ul class="cv-list">
+        <li>Adobe Suite (Photoshop, Premiere, etc.)</li>
+        <li>Fotografie & Videografie</li>
+        <li>Copywriting, storytelling & visuele strategie</li>
+        <li>Empathisch advies & coaching</li>
+        <li>Onderwijzende content formats</li>
+        <li>Analytisch & probleemoplossend</li>
+      </ul>
+      <p>Creatief zijn is onderdeel van wie ik ben. Of ik nu met mijn camera werk of digitale content bouw: creativiteit neem ik altijd mee.</p>
 
-            <h2 class="cv-subtitle">Talen</h2>
-            <ul class="cv-list">
-                <li>Nederlands (moedertaal)</li>
-                <li>Engels (vloeiend)</li>
-            </ul>
-        </section>
-    </main>
+      <h2 class="cv-subtitle">Werkervaring</h2>
+      <ul class="cv-list">
+        <li class="cv-work-item"><b>Hof Promotion</b> — Marketing Coördinator, Utrecht/Amsterdam (2022 – 2025)<br /><i>Marketing, visuele output, ontwerp van posters/flyers/video's, incentive communicatie, website & social media beheer, visuele identiteit.</i></li>
+        <li class="cv-work-item"><b>CK Creations</b> — Eigenaar (2022 – heden)<br /><i>Fotografie, videografie, social content, logo's, visuele huisstijlen, websites.</i></li>
+        <li class="cv-work-item"><b>NCOI Groep</b> – Opleidingsadviseur / Marketing Coördinator, Hilversum (2020 – 2021)<br /><i>Adviesgesprekken, campagnes, rapportages, website optimalisatie.</i></li>
+        <li class="cv-work-item"><b>SQRIBA / Jemax Robotics</b> – Commercieel Medewerker, Ermelo (2018 – 2019)<br /><i>Salesdemonstraties, marketingcampagnes, CRM, offertebeheer.</i></li>
+        <li class="cv-work-item"><b>VodafoneZiggo</b> – Adviseur Retail, Hilversum/Utrecht (2014 – 2018)<br /><i>Verkoop, advies, management support, data‑analyse, klanttevredenheid.</i></li>
+      </ul>
+
+      <h2 class="cv-subtitle">Talen</h2>
+      <ul class="cv-list">
+        <li>Nederlands (moedertaal)</li>
+        <li>Engels (vloeiend)</li>
+      </ul>
+    </section>
+  </main>
 </body>
 </html>

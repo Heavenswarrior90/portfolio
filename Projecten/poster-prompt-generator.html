@@ -2,98 +2,61 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Poster Prompt Generator – Juno Nova</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="De Juno Nova aanpak voor visuele prompt architectuur: altijd consistente, expressieve AI-beelden.">
-  <link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="De Juno Nova aanpak voor visuele prompt architectuur.">
+  <link rel="stylesheet" href="../styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    main { flex: 1; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 38px; padding-bottom: 38px; z-index: 1; position: relative; }
-    .project-detail-wrapper { max-width: 1100px; width: 100%; padding: 0 20px; }
-    .poster-flex { display: flex; align-items: flex-start; gap: 38px; }
-    .poster-main { flex: 2 1 0; min-width: 0; }
-    .poster-gallery {
-      flex: 1 1 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 24px;
-      margin-top: 10px;
-    }
-    .poster-gallery img {
-      width: 300px;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      border-radius: 1.2rem;
-      box-shadow: 0 4px 24px #ff174444;
-      border: 2px solid #ff1744;
-      background: #fff;
-      transition: transform 0.18s, box-shadow 0.18s;
-    }
-    .poster-gallery img:hover {
-      transform: scale(1.045) rotate(-1deg);
-      box-shadow: 0 10px 34px #ff1744aa;
-    }
-    @media (max-width: 1000px) {
-      .poster-flex { flex-direction: column; }
-      .poster-gallery { flex-direction: row; gap: 14px; justify-content: center; align-items: center; }
-      .poster-gallery img { width: 100%; max-width: 230px; }
-    }
-    section { background: #23232b; border-radius: 1.3rem; box-shadow: 0 2px 14px #ff174422; margin-bottom: 2.2rem; padding: 2.2rem 2.1rem 1.7rem 2.1rem; position: relative; z-index: 1; }
-    h1, h2 { color: #ff1744; font-weight: 700; letter-spacing: 0; margin-bottom: 14px; text-shadow: 0 0 12px #ff174466; }
-    h1 { font-size: 2.2rem; margin-top: 8px; margin-bottom: 18px; }
-    h2 { font-size: 1.18rem; margin-top: 0; }
-    blockquote { border-left: 4px solid #ff1744cc; background: #19181c; color: #ff1744cc; font-style: italic; padding: 13px 18px; margin: 18px 0; border-radius: 0.7rem; font-size: 1.06rem; box-shadow: 0 2px 10px #ff174422; }
-    .cta { text-align: right; margin-top: 10px; }
-    .cta a { color: #ff1744; font-weight: 600; text-decoration: none; }
-    @media (max-width: 850px) {
-      .project-detail-wrapper { padding: 0 3vw; }
-      section { padding: 1.3rem 1vw 1.15rem 1vw; }
-    }
-  </style>
+  <style>.project-detail-wrapper{width:min(1100px,94vw);margin-inline:auto}.poster-flex{display:grid;grid-template-columns:1.5fr .9fr;gap:24px}@media (max-width:1000px){.poster-flex{grid-template-columns:1fr}}section{background:var(--card);border-radius:1.3rem;box-shadow:var(--shadow);margin-bottom:1.8rem;padding:clamp(16px,2.2vw,28px)}</style>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="logo">AI</div>
-    <nav>
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="../index.html">Home</a>
+        <a href="../projecten.html" class="active">Projecten</a>
+        <a href="../overmij.html">Over mij</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('mobile-nav').classList.contains('open'));"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
       <a href="../index.html">Home</a>
       <a href="../projecten.html" class="active">Projecten</a>
       <a href="../overmij.html">Over mij</a>
       <a href="../contact.html">Contact</a>
     </nav>
-  </aside>
-  <main>
+  </header>
+
+  <main class="page">
     <div class="project-detail-wrapper poster-flex">
       <div class="poster-main">
         <section style="text-align:center; background:#19181c;">
           <div class="project-icon" style="font-size:2.4rem; margin-bottom:10px;">🖼️</div>
           <h1>Poster Prompt Generator</h1>
-          <p style="font-size:1.09rem; color:#b2b2bb;">
-            AI-Prompt architectuur voor consistente, krachtige beeldcreatie.<br>
-            <b style="color:#ff1744;">Visual Storytelling zonder AI-drift.</b>
-          </p>
+          <p class="muted">AI‑Prompt architectuur voor consistente, krachtige beeldcreatie.</p>
         </section>
+
         <section>
           <h2>Inleiding</h2>
-          <p>
-            Generatieve AI heeft beeldcreatie radicaal veranderd. Maar: professionele, realistische én betekenisvolle beelden vragen om méér dan een losse prompt. De Poster Prompt Generator is de methodiek die creativiteit én menselijkheid borgt.
-          </p>
+          <p>Generatieve AI heeft beeldcreatie radicaal veranderd. Maar: professionele, realistische én betekenisvolle beelden vragen om méér dan een losse prompt. De Poster Prompt Generator is de methodiek die creativiteit én menselijkheid borgt.</p>
         </section>
         <section>
           <h2>Probleemstelling</h2>
           <ul>
-            <li>Standaard AI-prompts missen emotie, leiden tot generieke of onpersoonlijke beelden.</li>
-            <li>Onvoorspelbare uitkomsten: AI begrijpt zelden subtiele wensen van de maker.</li>
-            <li>Inefficiënt itereren: veel trial-and-error, weinig herhaalbaarheid.</li>
+            <li>Standaard AI‑prompts missen emotie → generieke of onpersoonlijke beelden.</li>
+            <li>Onvoorspelbare uitkomsten: AI begrijpt zelden subtiele wensen.</li>
+            <li>Inefficiënt itereren: veel trial‑and‑error, weinig herhaalbaarheid.</li>
           </ul>
         </section>
         <section>
           <h2>Visie & Werkwijze</h2>
           <ul>
             <li><b>Empathisch interviewen:</b> Thema, emotie, stijl en techniek worden maatwerk.</li>
-            <li><b>Cinematische precisie:</b> Iedere uiting krijgt een filmisch fundament: onderwerp, setting, licht, emotie, compositie.</li>
-            <li><b>Modulair denken:</b> Het AI-prompt framework voor creativiteit én structuur.</li>
-            <li><b>Controle & consistentie:</b> Door metadaten en regels vast te leggen zijn series mogelijk.</li>
+            <li><b>Cinematische precisie:</b> Filmisch fundament: onderwerp, setting, licht, emotie, compositie.</li>
+            <li><b>Modulair denken:</b> Prompt‑framework voor creativiteit én structuur.</li>
+            <li><b>Controle & consistentie:</b> Metadaten en regels voor seriewerk.</li>
           </ul>
         </section>
         <section>
@@ -101,8 +64,8 @@
           <ol>
             <li><b>Cinematische opening:</b> Subject, setting & licht.</li>
             <li><b>Visueel ontwerp:</b> Compositie, kleur & stijl, cameratechniek.</li>
-            <li><b>Emotionele realiteit:</b> Expressie, micro-actie, textuur, mood.</li>
-            <li><b>Output & consistentie:</b> Posterstyle, serie-regels, filter/nabewerking.</li>
+            <li><b>Emotionele realiteit:</b> Expressie, micro‑actie, textuur, mood.</li>
+            <li><b>Output & consistentie:</b> Posterstyle, …</li>
           </ol>
         </section>
         <section>
@@ -141,10 +104,9 @@
           </blockquote>
         </section>
         <div class="cta">
-          <a href="../projecten.html">← Terug naar projecten</a>
         </div>
       </div>
-      <div class="poster-gallery">
+      <aside class="poster-gallery">
         <img src="../foto's/Dino1.png" alt="AI Poster 1">
         <img src="../foto's/Dino2.png" alt="AI Poster 2">
         <img src="../foto's/SW1.png" alt="AI Poster 3">

@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>N8N Workflows – Project</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>N8N Workflows – Project</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>.project-detail-wrapper{width:min(1100px,94vw);margin-inline:auto}.n8n-project{margin-bottom:22px}.n8n-project-flex{display:grid;grid-template-columns:1fr 380px;gap:18px}.n8n-project-desc,.n8n-project-img{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(14px,1.8vw,22px)}@media (max-width:900px){.n8n-project-flex{grid-template-columns:1fr}}</style>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="logo">AI</div>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="../projecten.html" class="active">Projecten</a>
-            <a href="../overmij.html">Over mij</a>
-            <a href="../contact.html">Contact</a>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="#" title="LinkedIn"><img src="linkedin.svg" alt="LinkedIn"></a>
-            <a href="#" title="GitHub"><img src="github.svg" alt="GitHub"></a>
-        </div>
-    </aside>
-<main>
-  <div class="project-detail-wrapper">
-    <section class="n8n-project">
-      <div class="n8n-project-flex">
-        <div class="n8n-project-desc">
-          <h2>Mijn benadering van n8n</h2>
-          <p>
-            Voor mij is <b>n8n</b> meer dan een automatiseringstool — het is een manier om AI-flows tastbaar, visueel en iteratief op te bouwen. Ik gebruik het om low-code oplossingen te bouwen die AI-logica, databronnen en menselijke triggers slim combineren. Mijn aanpak is hands-on, lokaal via <code>Docker</code> en <code>ngrok</code>, zodat ik volledige controle heb over datastromen, debuggen en privacy.
-          </p>
-        </div>
-    </section>
-
-    <section class="n8n-project">
-      <div class="n8n-project-flex">
-        <div class="n8n-project-desc">
-          <h2>Project 1: Body Recomp AI Automatisering</h2>
-          <p><b>Doel:</b> Automatisch fysieke progressie analyseren en gepersonaliseerde feedback geven.</p>
-          <ul>
-            <li><b>Trigger:</b> Foto wordt doorgestuurd via Telegram</li>
-            <li><b>Stap 1:</b> n8n ontvangt de foto en analyseert het beeld</li>
-            <li><b>Stap 2:</b> Extractie van data (vorm, schaduw, proporties)</li>
-            <li><b>Stap 3:</b> Data wordt opgeslagen in een Supabase database</li>
-            <li><b>Stap 4:</b> Een GPT-agent interpreteert progressie (gewicht/visuele markers)</li>
-            <li><b>Stap 5:</b> AI-agent geeft feedback of past het plan aan</li>
-          </ul>
-          <blockquote>
-            🤖 <i>"Je vetpercentage lijkt licht te dalen t.o.v. vorige week. Hou dit tempo vast. Vergeet je slaap niet!"</i>
-          </blockquote>
-        </div>
-        <div class="n8n-project-img">
-          <img src="../foto's/bodyrecomp.png" alt="Body Recomp n8n Flow">
-          <div class="n8n-img-caption">Voorbeeld: Body Recomp AI workflow in n8n</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="n8n-project">
-      <div class="n8n-project-flex">
-        <div class="n8n-project-desc">
-          <h2>Project 2: Idee Verzamelaar & Reflectie-loop</h2>
-          <p><b>Doel:</b> Creatieve ideeën capteren, bewaren en terugkoppelen voor verdieping en toepassing.</p>
-          <ul>
-            <li><b>Trigger:</b> Telegram bericht met een idee</li>
-            <li><b>Stap 1:</b> Idee wordt gevoerd aan een GPT-agent voor categorisatie & verrijking</li>
-            <li><b>Stap 2:</b> Invoer wordt opgeslagen in database (metadata + intentie)</li>
-            <li><b>Stap 3:</b> Cron-extensie triggert periodiek een reflectiemail met dit idee</li>
-            <li><b>Stap 4:</b> Optie tot feedback of planning binnen andere workflows</li>
-          </ul>
-          <blockquote>
-            📩 <i>"Herinnering: je idee over AI-soundscapes van vorige week. Wil je dit verder uitwerken?"</i>
-          </blockquote>
-        </div>
-        <div class="n8n-project-img">
-          <img src="../foto's/N8idea.png" alt="Idee Verzamelaar n8n Flow">
-          <div class="n8n-img-caption">Voorbeeld: Idee reflectie-loop in n8n</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="cta">
-      <a href="../projecten.html">← Terug naar projecten</a>
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="../index.html">Home</a>
+        <a href="../projecten.html" class="active">Projecten</a>
+        <a href="../overmij.html">Over mij</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('mobile-nav').classList.contains('open'));"><span></span><span></span><span></span></button>
     </div>
-  </div>
-</main>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
+      <a href="../index.html">Home</a>
+      <a href="../projecten.html" class="active">Projecten</a>
+      <a href="../overmij.html">Over mij</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="project-detail-wrapper">
+      <section class="n8n-project">
+        <div class="n8n-project-flex">
+          <div class="n8n-project-desc">
+            <h2>Mijn benadering van n8n</h2>
+            <p>Voor mij is <b>n8n</b> meer dan een automatiseringstool — het is een manier om AI‑flows tastbaar, visueel en iteratief op te bouwen. Ik gebruik het om low‑code oplossingen te bouwen die AI‑logica, databronnen en menselijke triggers slim combineren. Mijn aanpak is hands‑on, lokaal via <code>Docker</code> en <code>ngrok</code>, zodat ik volledige controle heb over datastromen, debuggen en privacy.</p>
+          </div>
+          <div class="n8n-project-img">
+            <img src="../foto's/bodyrecomp.png" alt="Body Recomp n8n Flow">
+            <div class="n8n-img-caption">Voorbeeld: Body Recomp AI workflow in n8n</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="n8n-project">
+        <div class="n8n-project-flex">
+          <div class="n8n-project-desc">
+            <h2>Project 1: Body Recomp AI Automatisering</h2>
+            <p><b>Doel:</b> Automatisch fysieke progressie analyseren en gepersonaliseerde feedback geven.</p>
+            <ul>
+              <li><b>Trigger:</b> Foto wordt doorgestuurd via Telegram</li>
+              <li><b>Stap 1:</b> n8n ontvangt de foto en analyseert het beeld</li>
+              <li><b>Stap 2:</b> Extractie van data (vorm, schaduw, proporties)</li>
+              <li><b>Stap 3:</b> Data wordt opgeslagen in een Supabase database</li>
+              <li><b>Stap 4:</b> Een GPT‑agent interpreteert progressie (gewicht/visuele markers)</li>
+              <li><b>Stap 5:</b> AI‑agent geeft feedback of past het plan aan</li>
+            </ul>
+            <blockquote>🤖 <i>"Je vetpercentage lijkt licht te dalen t.o.v. vorige week. Hou dit tempo vast. Vergeet je slaap niet!"</i></blockquote>
+          </div>
+          <div class="n8n-project-img">
+            <img src="../foto's/bodyrecomp.png" alt="Body Recomp n8n Flow">
+            <div class="n8n-img-caption">Voorbeeld: Body Recomp AI workflow in n8n</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="n8n-project">
+        <div class="n8n-project-flex">
+          <div class="n8n-project-desc">
+            <h2>Project 2: Idee Verzamelaar & Reflectie‑loop</h2>
+            <p><b>Doel:</b> Creatieve ideeën capteren, bewaren en terugkoppelen voor verdieping en toepassing.</p>
+            <ul>
+              <li><b>Trigger:</b> Telegram bericht met een idee</li>
+              <li><b>Stap 1:</b> GPT‑agent voor categorisatie & verrijking</li>
+              <li><b>Stap 2:</b> Opslag in database (metadata + intentie)</li>
+              <li><b>Stap 3:</b> Periodieke reflectiemail via cron</li>
+              <li><b>Stap 4:</b> Koppeling naar andere workflows</li>
+            </ul>
+            <blockquote>📩 <i>"Herinnering: je idee over AI‑soundscapes van vorige week. Wil je dit verder uitwerken?"</i></blockquote>
+          </div>
+          <div class="n8n-project-img">
+            <img src="../foto's/N8idea.png" alt="Idee Verzamelaar n8n Flow">
+            <div class="n8n-img-caption">Voorbeeld: Idee reflectie‑loop in n8n</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 </body>
 </html>

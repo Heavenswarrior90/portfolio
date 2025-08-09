@@ -1,66 +1,54 @@
-<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JUNO NOVA Architectuur – Portfolio Chiël Klinkenberg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="De evolutie en architectuur van JUNO NOVA: reflectieve, modulaire AI-systemen.">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>.project-detail-wrapper{width:min(1100px,94vw);margin-inline:auto}</style>
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="logo">AI</div>
-    <nav>
+  <header class="site-header">
+    <div class="bar container">
+      <div class="logo">AI</div>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="../index.html">Home</a>
+        <a href="../projecten.html" class="active">Projecten</a>
+        <a href="../overmij.html">Over mij</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <button class="burger" aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open'); this.setAttribute('aria-expanded', document.getElementById('mobile-nav').classList.contains('open'));"><span></span><span></span><span></span></button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie">
       <a href="../index.html">Home</a>
       <a href="../projecten.html" class="active">Projecten</a>
       <a href="../overmij.html">Over mij</a>
       <a href="../contact.html">Contact</a>
     </nav>
-  </aside>
-  <main>
-    <div class="project-detail-wrapper">
-      <section class="card">
-        <h1>JUNO NOVA – Reflectieve AI Architectuur</h1>
-      </section>
+  </header>
 
+  <main class="page">
+    <div class="project-detail-wrapper">
+      <section class="card"><h1>JUNO NOVA – Reflectieve AI Architectuur</h1></section>
       <section class="card">
         <h2>📅 Tijdlijn: De evolutie van Jo naar JUNO NOVA</h2>
         <div class="timeline">
           <div class="timeline-item">
             <h3>Fase 1: Originele Idee – Jo de AI <span>🕒 Q1 2025</span></h3>
             <p><b>Beschrijving:</b> Eerste poging om een assistentachtige GPT te maken met taken, rollen en tokenbeheer.</p>
-            <p><b>Focus & Inzichten:</b> Prompt chaining, VA-achtige flow, contextuele roltoewijzing</p>
-            <p><b>Modules / Shifts:</b> Jo v7.9 tot v8.1, RAG-integratie, Assistant loops</p>
-            <p><b>Reflectie:</b> Startpunt: “Hoe maak ik GPT bruikbaar als AI-agent?”</p>
+            <p><b>Focus & Inzichten:</b> Prompt chaining, VA‑achtige flow, contextuele roltoewijzing</p>
+            <p><b>Modules / Shifts:</b> Jo v7.9 tot v8.1, RAG‑integratie, Assistant loops</p>
           </div>
           <div class="timeline-item">
             <h3>Fase 2: Reflectieve Omslag – JUNO ontstaat <span>🕒 Q1 2025</span></h3>
-            <p><b>Beschrijving:</b> Je creëert JUNO als naam, bouwt Twin-logica, en begint met reflectieve denkstructuur.</p>
-            <p><b>Focus & Inzichten:</b> RPOL v1, Twin-gedrag, rolbewuste reflectie</p>
-            <p><b>Modules / Shifts:</b> AI-Twin matrix, RPOL structuur, gedragsfaseherkenning</p>
-            <p><b>Reflectie:</b> Omslag naar zelflerende co-pilot in plaats van command-line AI</p>
+            <p><b>Beschrijving:</b> Naamgeving JUNO, Twin‑logica, start reflectieve denkstructuur.</p>
+            <p><b>Focus & Inzichten:</b> RPOL v1, Twin‑gedrag, rolbewuste reflectie</p>
+            <p><b>Modules / Shifts:</b> AI‑Twin matrix, RPOL‑structuur, gedragsfaseherkenning</p>
           </div>
           <div class="timeline-item">
             <h3>Fase 3: Modulair Denken – JUNO als systeem <span>🕒 Q2 2025</span></h3>
-            <p><b>Beschrijving:</b> Je splitst JUNO op in modules: script engine, data-analyse, trading en rollenstructuur.</p>
-            <p><b>Focus & Inzichten:</b> Blueprint denken, persona chaining, output-engineering</p>
-            <p><b>Modules / Shifts:</b> Script Engine, TeamAgents, Blueprint selector v1</p>
-            <p><b>Reflectie:</b> Jij wordt architect i.p.v. alleen gebruiker</p>
-          </div>
-          <div class="timeline-item">
-            <h3>Fase 4: Kernbouw – JUNO als reflectieve architectuur <span>🕒 Q2 2025</span></h3>
-            <p><b>Beschrijving:</b> Silent Mode, chainingregels, outputvalidatie, flowanticipatie en outputtypes ontstaan.</p>
-            <p><b>Focus & Inzichten:</b> RPOL v2.0, Silent Reflection, Format-tuning</p>
-            <p><b>Modules / Shifts:</b> Output Validatie Engine, DFA v1, Multi-Role Twin</p>
-            <p><b>Reflectie:</b> Je AI begint actief mee te denken en voor te stellen</p>
-          </div>
-          <div class="timeline-item">
-            <h3>Fase 5: Expertstatus – JUNO NOVA <span>🕒 Q3 2025</span></h3>
-            <p><b>Beschrijving:</b> Zelftuning, benchmark learning, parallel denken, semantische correctie en exportflows.</p>
-            <p><b>Focus & Inzichten:</b> Benchmark Memory, Self-Tuning Prompt Engine, Confidence-based logic</p>
-            <p><b>Modules / Shifts:</b> STPE, RPOL v2.0, Reflectie Confidence Logic, Live Export Engine</p>
-            <p><b>Reflectie:</b> JUNO is nu meta-reflectief, benchmarked en systematisch zelfcorrigerend.</p>
+            <p><b>Beschrijving:</b> Opsplitsing in modules: script engine, …</p>
           </div>
         </div>
       </section>
@@ -127,7 +115,6 @@
 
 
       <div class="cta">
-        <a href="../projecten.html">← Terug naar projecten</a>
       </div>
     </div>
   </main>
